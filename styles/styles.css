@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border: 0;
+}
+
+:root {
+  --dark-color: #1100D7;
+  --light-color: #00BDD7;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.gridbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+svg {
+  cursor: pointer; 
+}
+
+/* ######  Arrow animation  ###### */
+
+#arrow #dark {
+  fill: var(--dark-color);
+}
+#arrow #light {
+  fill: var(--light-color);
+}
+
+#dark-polygon-1,
+#dark-polygon-2,
+#light-polygon-1 {
+  transition: all .7s ease;
+}
+
+#dark-polygon-1 {
+  transform: translateX(20%);
+}
+#dark-polygon-2 {
+  transform: translateX(-70%);
+  opacity: 0;
+}
+
+#arrow:hover #light-polygon-1 {
+  transform: translateX(20%);
+}
+#arrow:hover #dark-polygon-1 {
+  transform: translateX(40%);
+  opacity: 0;
+}
+#arrow:hover #dark-polygon-2 {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+/* ######  Phone animation  ###### */
+
+#skeleton {
+  animation: fade-in-up 1s ease;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    translate: 0 20%;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+#volt g {
+  opacity: 0;
+  animation: drop-in 8s ease forwards infinite;
+  animation-delay: calc(var(--order) * 200ms);
+}
+
+@keyframes drop-in {
+  20% {
+    opacity: 0;
+    translate: 0 -20%;
+  }
+
+  30%, 100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+/* 
+  100% {
+    opacity: 0;
+  } */
+}
